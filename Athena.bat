@@ -247,7 +247,7 @@ echo [40;37m
 echo                                  [[40;31mmore options[40;37m]
 echo     ╔══════════════════════════════════╗╔══════════════════════════════════╗
 echo     ║* [[40;31m1[40;37m]: pc                         ║║* [[40;31m4[40;37m]: view netstat               ║
-echo     ║* [[40;31m2[40;37m]: google search              ║║* [[40;31m5[40;37m]: pending                    ║
+echo     ║* [[40;31m2[40;37m]: google search              ║║* [[40;31m5[40;37m]: Updater                    ║
 echo     ║* [[40;31m3[40;37m]: date and time              ║║* [[40;31m6[40;37m]: go back                    ║
 echo     ╚══════════════════════════════════╝╚══════════════════════════════════╝
 echo.
@@ -257,6 +257,7 @@ if %more1% == 1 goto pc1
 if %more1% == 2 goto google1
 if %more1% == 3 goto dandt1
 if %more1% == 4 goto netstat1
+if %more1% == 5 goto update1
 if %more1% == 6 goto launcher1
 echo.
 echo [40;37mPlease pick an option between [40;32m1-6[40;37m.
@@ -1233,6 +1234,24 @@ echo.
 echo [40;37mreturing to game launcher...
 ping localhost -n 2 -w 1.0>nul
 goto steamlauncher1
+
+
+
+
+:update1
+
+mode con lines=24 cols=80
+utm_source=share&utm_medium=web2x&context=3
+if /i not "%~1"=="updated" (
+    echo Updating %~nx0 ...
+    >nul 2>&1 powershell iwr "https://raw.githubusercontent.com/dx-n/Athena/main/Athena.bat" -OutFile "%temp%\%~nx0"
+    >nul 2>&1 move /y "%temp%\%~nx0" "%~0"
+    (start "%~dp0" "%~0" updated) & exit /b
+)
+cd /d "%~dp0"
+cd /d "%~dp0"
+ping localhost -n 5 -w 1.0>nul
+exit
 
 
 
