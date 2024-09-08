@@ -194,7 +194,7 @@ echo.
 echo ╔═[[40;31mSettings[40;37m]
 set /p settings1= ╚═══➤ [40;31m
 if %settings1% == 1 goto r11
-if %settings1% == 2 goto updater
+if %settings1% == 2 goto update1
 if %settings1% == 3 goto system1
 if %settings1% == 4 goto launcher1
 if %settings1% == exit goto exit1
