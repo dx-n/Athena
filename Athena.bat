@@ -1,5 +1,6 @@
 rem sourse code written by: dxn
 rem sourse code updated April 2024 by: dxn
+rem sourse code ready May 2025 by: dxn
 set "params=%*"
 cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul 2>nul || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && ""%~s0"" %params%", "", "runas", 1 >> "%temp%\getadmin.vbs" && "%temp%\getadmin.vbs" && exit /B )
 @Echo off
@@ -150,7 +151,7 @@ goto system1
 
 :system2
 echo.
-echo [40;37m[Running system check]
+echo [40;37mRunning system check...
 ping localhost -n 3 -w 1.0>nul
 cls
 echo [40;37m╔═══════════════════════╗
@@ -160,7 +161,6 @@ systeminfo | findstr /c:"OS Name"
 systeminfo | findstr /c:"OS Version"
 systeminfo | findstr /c:"System Type"
 systeminfo | findstr /c:"System Model"
-systeminfo | findstr /c:"Domain"
 systeminfo | findstr /c:"Host Name"
 systeminfo | findstr /c:"System Manufacturer"
 echo ╔═════════════════╗
@@ -488,7 +488,7 @@ echo                           ║    Date - [[40;33m%date%[40;37m]      ║
 echo                           ║                             ║
 echo                           ╚═════════════════════════════╝
 echo                           ╔═════════════════════════════╗
-echo                           ║   Press [40;32menter[40;37m to return   ║
+echo                           ║    Press [40;32menter[40;37m to return    ║
 echo                           ╚═════════════════════════════╝
 echo.
 pause>nul
@@ -499,12 +499,18 @@ goto launcher1
 :timing
 cls [40;37m
 set /a "sec=0" && set /a "min=0" && set /a "hour=0" && set /a "days=0" && set /a "timer=60"
-echo [40;37m                          ╔═════════════════════════════╗
-echo                           ║* [[40;31m1[40;37m]: Stop Watch            ║
-echo                           ║* [[40;31m2[40;37m]: Timer                 ║
-echo                           ║* [[40;31m3[40;37m]: Go back               ║
-echo                           ╚═════════════════════════════╝
-set /p timings=
+echo.
+echo.  
+echo                        [40;37m [[40;32mBETA[40;37m]
+echo [40;37m                        ╔═════════════════════════════╗
+echo                         ║* [[40;31m1[40;37m]: Stop Watch            ║
+echo                         ║* [[40;31m2[40;37m]: Timer                 ║
+echo                         ║* [[40;31m3[40;37m]: Go back               ║
+echo                         ╚═════════════════════════════╝
+echo.
+echo.
+echo ╔═[[40;31mTimer[40;37m]
+set /p timings= ╚═══➤ [40;31m
 if "%timings%"=="1" goto stop_watch
 if "%timings%"=="2" goto countdown
 if "%timings%"=="3" goto more1
@@ -516,7 +522,17 @@ set /a "sec+=1"
 if "%sec%"=="60" set /a "min+=1" & set /a "sec=0"
 if "%min%"=="60" set /a "hour+=1" & set /a "min=0" & set /a "sec=0"
 if "%hour%"=="24" set /a "days+=1" & set /a "hour=0" & set /a "min=0" & set /a "sec=0"
-echo Elapsed time: %days% days %hour% hours %min% minutes %sec% seconds
+echo. 
+echo                         [40;37m       ╔══════════════╗
+echo                                ║ Elapsed time ║
+echo                                ╚══════════════╝
+echo                         ╔═════════════════════════════╗
+echo                         ║         [40;31m%days%[40;37m days              ║
+echo                         ║         [40;31m%hour%[40;37m hours             ║
+echo                         ║         [40;31m%min%[40;37m minutes           ║
+echo                         ║         [40;31m%sec%[40;37m seconds          ║
+echo                         ╚═════════════════════════════╝
+echo.
 timeout /t 1 /nobreak >nul
 goto stop_watch
 :countdown
