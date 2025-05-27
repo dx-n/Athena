@@ -711,7 +711,7 @@ echo.
 echo [40;37m
 echo                                [[40;31mPatch Notes[40;37m]
 echo                  ╔═════════════════════════════════════════╗
-echo                  ║ [[40;32mLast Updated[40;37m]: 2nd December 2024       ║
+echo                  ║ [[40;32mLast Updated[40;37m]: 27th May 2025           ║
 echo                  ╚═════════════════════════════════════════╝
 echo                  ╔═════════════════════════════════════════╗
 echo                  ║* [[40;32mAdded[40;37m]: more options                  ║
